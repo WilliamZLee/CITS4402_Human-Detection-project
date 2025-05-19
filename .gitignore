@@ -1,0 +1,33 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# Data folders
+data/train/*
+data/test/*
+!.gitkeep
+
+# Compressed dataset
+*.tar.gz
+*.zip
+
+# Ignore raw dataset
+DC-ped-dataset_base/
+*.pgm
+
+# But keep sample set
+!data/train/pos/
+!data/train/neg/
