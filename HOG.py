@@ -8,7 +8,7 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 from joblib import dump
 
-# 设置图像尺寸和 HOG 参数
+# set default parameters for HOG and image size
 img_size = (128, 64)
 hog_params = {
     'orientations': 9,
@@ -17,23 +17,23 @@ hog_params = {
     'block_norm': 'L2-Hys'
 }
 
-# 数据路径和保存路径
+# data path
 base_path = Path("data/train")
 classes = ['pos', 'neg']
 output_dir = Path("Others")
 output_dir.mkdir(exist_ok=True)
 
-# 特征文件路径
+# feature path to store proocessed HOG features
 X_npy_path = output_dir / "X_train.npy"
 y_npy_path = output_dir / "y_train.npy"
 
-# ==== 判断缓存是否存在 ====
+# ==== check if features exist ====
 if X_npy_path.exists() and y_npy_path.exists():
-    print("检测到缓存特征文件，正在加载...")
+    print("Loading, found feature files...")
     X_train = np.load(X_npy_path)
     y_train = np.load(y_npy_path)
 else:
-    print("未检测到缓存，开始提取 HOG 特征...")
+    print("Can't get feature files, initiating HOG features processing...")
     X_train = []
     y_train = []
     for label, class_name in enumerate(classes):
@@ -52,23 +52,23 @@ else:
     np.save(X_npy_path, X_train)
     np.save(y_npy_path, y_train)
 
-# 输出信息
-print("特征准备完成！")
+# output
+print("Features processed！")
 print("X_train shape:", X_train.shape)
 print("y_train[:10]:", y_train[:10])
-print("特征维度:", len(X_train[0]))
+print("feature demenssion:", len(X_train[0]))
 
-# === 训练 SVM ===
-print("开始训练 LinearSVC 模型...")
+# === train SVM ===
+print("start training LinearSVC model...")
 clf = LinearSVC()
 clf.fit(X_train, y_train)
 
-# === 模型训练完成，输出训练准确率 ===
+# === output accuracy on train set ===
 y_pred = clf.predict(X_train)
 train_acc = accuracy_score(y_train, y_pred)
-print(f"模型训练完成，训练集准确率: {train_acc:.4f}")
+print(f"Model finished, the accuracy on train set is: {train_acc:.4f}")
 
-# === 保存模型 ===
+# === save model ===
 model_path = output_dir / "model.pkl"
 dump(clf, model_path)
-print(f"模型已保存至: {model_path}")
+print(f"Model been stored at: {model_path}")
