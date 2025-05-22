@@ -20,6 +20,11 @@
 \usepackage{comment}
 \usepackage{fancyhdr}
 \usepackage{verbatim}
+\pagestyle{fancy}
+\fancyhf{}  
+\renewcommand{\headrulewidth}{0pt}  
+\renewcommand{\footrulewidth}{0pt}  
+
 
 
 %\setlength{\droptitle}{-3cm} 
@@ -38,9 +43,17 @@
 \author{}
 \date{}
 
+\fancypagestyle{firstpage}{
+  \fancyhf{}  
+    \fancyfoot[L]{\small
+    Code: \href{https://github.com/WilliamZLee/CITS4402_Human-Detection-project}{Human Detection project Repo} \\
+    Data: \href{http://www.gavrila.net/Datasets/Daimler_Pedestrian_Benchmark_D/Daimler_Mono_Ped__Class__Bench/daimler_mono_ped__class__bench.html}{Daimler Pedestrian Dataset}
+    }
+  \fancyfoot[C]{\thepage} 
+}
 \begin{document}
-
 \maketitle
+\thispagestyle{firstpage}
 
 \vspace{-7em}
 \begin{center}
@@ -258,7 +271,7 @@ and L2 normalization substantially improved classification outcomes over the ori
 \vspace{0.5em}
 
 This project successfully reproduced the human detection pipeline proposed by Dalal and Triggs, utilizing Histogram of Oriented Gradients (HOG) features and a linear SVM classifier. 
-Through a systematic ablation study framework, we explored how modifications to orientation bins, block sizes, and normalization schemes affect classification accuracy. 
+Through a systematic ablation study framework, I explored how modifications to orientation bins, block sizes, and normalization schemes affect classification accuracy. 
 Among all tested configurations, a setup with 18 orientation bins, a 4$\times$4 block size, and L2 normalization yielded the best performance, achieving an accuracy of 84.5\% and recall of 89\% on the test set.
 
 To support user interpretation and testing, a lightweight GUI was developed to visualize predictions and export results. 
