@@ -4,7 +4,16 @@ This repository contains the source code and report for the Human Detection proj
 The data set could be found following the link posted in my report, or the link here:
 http://www.gavrila.net/Datasets/Daimler_Pedestrian_Benchmark_D/Daimler_Mono_Ped__Class__Bench/daimler_mono_ped__class__bench.html
 
-This `README.md` file is to guide you through my project folder structure and how to run the GUI for checking my model's performance.
+This `README.md` file is to guide you through my project folder structure and how to run the GUI for checking my model's performance. If you want to run this project locally, clone the repository and set up dependencies with the following:
+``` bash
+git clone https://github.com/WilliamZLee/CITS4402_Human-Detection-project.git
+cd CITS4402_Human-Detection-project
+pip install scikit-learn scikit-image joblib pandas PyQt5
+# (Optional) Create a virtual environment:
+# python -m venv venv
+# source venv/bin/activate      # On Mac/Linux
+# .\venv\Scripts\activate       # On Windows
+```
 
 ## Author
 - Liweiwen Zhou (24100792)  
