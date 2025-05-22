@@ -19,7 +19,7 @@ This `README.md` file is to guide you through my project folder structure and ho
 - `final_model.py` / `final_evaluate.py` – final trained model using best parameters  
 - `GUI_test.py` – GUI interface to visualize predictions  
 - `Testing Images/` – 20 test images + labels.txt used in GUI  
-- `Others/` – cached features and trained model (`.npy` / `.pkl`)  
+- `Others/` – cached features and trained model (`.npy` / `.pkl`) and all other scripts (`.py`) with the submitted version `.zip` file. 
 - `Reference.bib` – reference used in the report  
 - `CITS4402_Research_Liweiwen Zhou_24100792.pdf` – final LaTeX report
 
